@@ -1,7 +1,5 @@
 const app = document.querySelector('.app')
-let emojiArray = new Map()
-
-emojiArray.set(0,'&#128565').set(1,'&#128560').set(2,'&#128520').set(3,'&#128518').set(4,'&#128520').set(5,'&#128565').set(6,'&#128526').set(7,'&#128525').set(8,'&#128514')
+let emojiArray = ['&#128565', '&#128560', '&#128520', '&#128518', '&#128520', '&#128565', '&#128526', '&#128525', '&#128514']
 
 const createCircleArena = () => {
     const circleChoice = document.createElement('div')
@@ -62,8 +60,8 @@ const selected = selectedCircleArena()
 const middleBox = document.querySelector('.arena__middle')
 
 const createEmoji = () => {
-    let selectedMap = new Map()
-    const stringsArray = Array.from(emojiArray.values()).sort((a, b) => 0.5 - Math.random())
+    const selectedMap = new Map()
+    const stringsArray = emojiArray.sort((a, b) => 0.5 - Math.random())
 
     stringsArray.forEach((object, index) => {
         if (index > 1 && index < 8) {
@@ -79,12 +77,12 @@ const createEmoji = () => {
 
                 if (index === 0) {
                     index = 8
-                    circle.innerHTML = emojiArray.get(index)
+                    circle.innerHTML = emojiArray[index]
                 }
 
-                if (index !== 0){
+                if (index !== 0) {
                     index = index - 1
-                    circle.innerHTML = emojiArray.get(index)
+                    circle.innerHTML = emojiArray[index]
                 }
             })
 
@@ -94,17 +92,16 @@ const createEmoji = () => {
 
                 if (index === 8) {
                     index = 0
-                    circle.innerHTML = emojiArray.get(index)
+                    circle.innerHTML = emojiArray[index]
                 }
 
-                if (index !== 8){
+                if (index !== 8) {
                     index = index + 1
-                    circle.innerHTML = emojiArray.get(index)
+                    circle.innerHTML = emojiArray[index]
                 }
             })
 
-            circle.addEventListener('click', (event) => {
-
+            circle.addEventListener('click', event => {
                 if (selectedMap.size < 10) {
                     const addedCircle = document.createElement('div')
                     const emoji = event.target.innerHTML
@@ -115,7 +112,7 @@ const createEmoji = () => {
                     addedCircle.innerHTML = emoji
                     selected.appendChild(addedCircle)
 
-                    addedCircle.addEventListener('click', (event) => {
+                    addedCircle.addEventListener('click', event => {
                         selectedMap.delete(randomKey)
                         event.target.remove()
                     })
