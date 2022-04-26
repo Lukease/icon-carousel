@@ -1,7 +1,7 @@
 const app = document.querySelector('.app')
-
 const circleArray = Array.from(new Array(9))
 const emojiArray = ['&#128565', '&#128560', '&#128520', '&#128518', '&#128520', '&#128565', '&#128514', '&#128526', '&#128525']
+
 const createCircleArena = () => {
     const circleChoice = document.createElement('div')
 
@@ -81,25 +81,28 @@ const select = () => {
             middleBox.appendChild(circle)
 
             const leftIcon = document.querySelector('.next__left')
+
             circle.innerHTML = sortedEmoji[index]
             leftIcon.addEventListener('click', () => {
+
                 if (index === 0) {
                     index = 8
                     circle.innerHTML = sortedEmoji[index]
                 }
-                index = index - 1
-                circle.innerHTML = sortedEmoji[index]
+                    index = index - 1
+                    circle.innerHTML = sortedEmoji[index]
             })
 
             const rightIcon = document.querySelector('.next')
 
             rightIcon.addEventListener('click', () => {
+
                 if (index === 8) {
                     index = 0
                     circle.innerHTML = sortedEmoji[index]
                 }
-                index = index + 1
-                circle.innerHTML = sortedEmoji[index]
+                    index = index + 1
+                    circle.innerHTML = sortedEmoji[index]
             })
 
             circle.addEventListener('click', (event) => {
@@ -119,6 +122,3 @@ const select = () => {
 }
 
 select()
-
-const iconLeft = document.querySelector('.next__left')
-const iconRight = document.querySelector('.next')
