@@ -1,5 +1,5 @@
 const app = document.querySelector('.app')
-let emojiArray = ['&#128565', '&#128560', '&#128520', '&#128518', '&#128520', '&#128565', '&#128526', '&#128525', '&#128514']
+const emojiArray = ['&#128565', '&#128560', '&#128520', '&#128518', '&#128520', '&#128565', '&#128526', '&#128525', '&#128514']
 
 const createCircleArena = () => {
     const circleChoice = document.createElement('div')
