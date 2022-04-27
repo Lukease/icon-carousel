@@ -42,12 +42,18 @@ const createCircleArena = () => {
 
 createCircleArena()
 
-const selectedCircleArena = () => {
+const createSelectContainer = () =>{
     const circleSelected = document.createElement('div')
 
     circleSelected.classList.add('app__container')
     app.appendChild(circleSelected)
 
+    return circleSelected
+}
+
+const circleSelected = createSelectContainer()
+
+const createSelectArena = () => {
     const selectedArena = document.createElement('div')
 
     selectedArena.classList.add('selected')
@@ -56,11 +62,11 @@ const selectedCircleArena = () => {
     return selectedArena
 }
 
-const selected = selectedCircleArena()
+const selected = createSelectArena()
 const middleBox = document.querySelector('.arena__middle')
 
 const createEmoji = () => {
-    const selectedMap = new Map()
+    const selectedSet = new Set()
     const stringsArray = emojiArray.sort((a, b) => 0.5 - Math.random())
 
     stringsArray.forEach((object, index) => {
@@ -102,21 +108,28 @@ const createEmoji = () => {
             })
 
             circle.addEventListener('click', event => {
-                if (selectedMap.size < 10) {
-                    const addedCircle = document.createElement('div')
-                    const emoji = event.target.innerHTML
-                    const randomKey = Math.random()
+                const emoji = event.target.innerHTML
 
-                    selectedMap.set(randomKey, emoji)
-                    addedCircle.classList.add('arena__circle')
-                    addedCircle.innerHTML = emoji
-                    selected.appendChild(addedCircle)
+                selectedSet.add(emoji)
+
+                const selectedBox = document.querySelector('.selected')
+
+                selectedBox.remove()
+
+                const circleBox = createSelectArena()
+
+                selectedSet.forEach((object)=>{
+                    const addedCircle = document.createElement('div')
+
+                    addedCircle.classList.add('selected__circle')
+                    addedCircle.innerHTML = object
+                    circleBox.appendChild(addedCircle)
 
                     addedCircle.addEventListener('click', event => {
-                        selectedMap.delete(randomKey)
+                        selectedSet.delete(object)
                         event.target.remove()
                     })
-                }
+                })
             })
         }
     })
