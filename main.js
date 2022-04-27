@@ -69,7 +69,7 @@ const createEmoji = () => {
     const selectedSet = new Set()
     const stringsArray = emojiArray.sort((a, b) => 0.5 - Math.random())
 
-    stringsArray.forEach((object, index) => {
+    stringsArray.forEach((emoji, index) => {
         if (index > 1 && index < 8) {
             const circle = document.createElement('div')
 
@@ -78,7 +78,7 @@ const createEmoji = () => {
 
             const leftIcon = document.querySelector('.next__left')
 
-            circle.innerHTML = object
+            circle.innerHTML = emoji
             leftIcon.addEventListener('click', () => {
                 if (index === 0) {
                     index = 8
