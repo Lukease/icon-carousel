@@ -42,7 +42,7 @@ const createCircleArena = () => {
 
 createCircleArena()
 
-const createSelectContainer = () =>{
+const createSelectContainer = () => {
     const circleSelected = document.createElement('div')
 
     circleSelected.classList.add('app__container')
@@ -80,7 +80,6 @@ const createEmoji = () => {
 
             circle.innerHTML = object
             leftIcon.addEventListener('click', () => {
-
                 if (index === 0) {
                     index = 8
                     circle.innerHTML = emojiArray[index]
@@ -95,7 +94,6 @@ const createEmoji = () => {
             const rightIcon = document.querySelector('.next')
 
             rightIcon.addEventListener('click', () => {
-
                 if (index === 8) {
                     index = 0
                     circle.innerHTML = emojiArray[index]
@@ -108,9 +106,9 @@ const createEmoji = () => {
             })
 
             circle.addEventListener('click', event => {
-                const emoji = event.target.innerHTML
+                const emojiString = event.target.innerHTML
 
-                selectedSet.add(emoji)
+                selectedSet.add(emojiString)
 
                 const selectedBox = document.querySelector('.selected')
 
@@ -118,15 +116,15 @@ const createEmoji = () => {
 
                 const circleBox = createSelectArena()
 
-                selectedSet.forEach((object)=>{
+                selectedSet.forEach(emoji => {
                     const addedCircle = document.createElement('div')
 
                     addedCircle.classList.add('selected__circle')
-                    addedCircle.innerHTML = object
+                    addedCircle.innerHTML = emoji
                     circleBox.appendChild(addedCircle)
 
                     addedCircle.addEventListener('click', event => {
-                        selectedSet.delete(object)
+                        selectedSet.delete(emoji)
                         event.target.remove()
                     })
                 })
